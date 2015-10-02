@@ -3,29 +3,28 @@
 == Intro
 
 * Links to CCM Intro and setup
-
- http://www.datastax.com/dev/blog/ccm-a-development-tool-for-creating-local-cassandra-clusters[DataStax CCM Blog]
-
- https://github.com/pcmanus/ccm[CCM on GitHub]
+** http://www.datastax.com/dev/blog/ccm-a-development-tool-for-creating-local-cassandra-clusters[DataStax CCM Blog]
+** https://github.com/pcmanus/ccm[CCM on GitHub]
 
 * Creates virtual cluster on one box
 
 * Only works with localhost
   * Adding more loopbacks on Mac
   
-    ```
-    sudo ifconfig lo0 alias 127.0.0.2
-    ifconfig
-    ```
+----
+  sudo ifconfig lo0 alias 127.0.0.2
+  ifconfig
+----
 
 * Good for data modeling experimentation
 
 * Also good for exploring C* features
 
-* Let's explore Consistency Level and Hinted Handoff
+* Let's explore Consistency Level and Hinted Handoff using CCM!
 
 == Example
 
+----
 [jmctee@Philae ~]$ ccm create -v 2.2.1 -n 5 mycluster
 Current cluster is now: mycluster
 [jmctee@Philae ~]$ ccm status
@@ -225,3 +224,4 @@ cqlsh:mykeyspace> select * from system.hints;
 cqlsh:mykeyspace> quit
 [jmctee@Philae ~]$ ccm stop
 [jmctee@Philae ~]$ ccm remove
+----
